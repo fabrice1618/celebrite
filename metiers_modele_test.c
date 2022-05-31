@@ -5,7 +5,7 @@
 #include "database.h"
 #include "metiers_modele.h"
 
-void print_celebrite(char *metier);
+void print_metier(char *metier);
 
 int main(int argc, char **argv)
 {
@@ -16,24 +16,24 @@ int main(int argc, char **argv)
     cnx = database_open(cnx);
 
     strcpy(metier, "SysAdmin");
-    print_celebrite(metier);
+    print_metier(metier);
 
     id_cree = 19;
 
-    id_cree = metiers_create(cnx, metier);
-    printf("Id cree = %d\n", id_cree);
+    // id_cree = metiers_create(cnx, metier);
+    // printf("Id cree = %d\n", id_cree);
 
     strcpy(metier, "");
-    print_celebrite(metier);
+    print_metier(metier);
 
     int lecture = metiers_read(cnx, id_cree, metier);
-    print_celebrite(metier);
+    print_metier(metier);
 
     database_close(cnx);
     exit(0);
 }
 
-void print_celebrite(char *metier)
+void print_metier(char *metier)
 {
     printf("celebrite: %s\n", metier);
 }
