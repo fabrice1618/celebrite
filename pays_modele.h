@@ -2,13 +2,13 @@
 // 
 
 
-#ifndef CELEBRITES_MODELE_H
-#define CELEBRITES_MODELE_H
+#ifndef PAYS_MODELE_H
+#define PAYS_MODELE_H
 
-int celebrites_create( char *nom, char *prenom, char *genre );
-int celebrites_read(int celeb_id, char *nom, char *prenom, char *genre);
-int celebrites_update(int celeb_id, char *nom, char *prenom, char *genre);
-int celebrites_delete(int celeb_id);
-int celebrites_existe(int celeb_id);
+int pays_create(MYSQL *cnx, char *nom_pays);
+int pays_read(MYSQL *cnx, int pays_id, char *nom_pays);
+int pays_update(MYSQL *cnx, int pays_id, char *nom_pays);
+int pays_delete(MYSQL *cnx, int pays_id);
+int pays_existe(MYSQL *cnx, int pays_id);
 
 #endif
