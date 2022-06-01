@@ -1,9 +1,7 @@
-// Bastien
-// 
-
-
 #ifndef PAYS_MODELE_H
 #define PAYS_MODELE_H
+
+#include <mysql/mysql.h>
 
 int pays_create(MYSQL *cnx, char *nom_pays);
 int pays_read(MYSQL *cnx, int pays_id, char *nom_pays);

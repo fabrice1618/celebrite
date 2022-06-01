@@ -1,6 +1,6 @@
 #include <stdio.h>
 #include <string.h>
-#include <mysql.h>
+#include <mysql/mysql.h>
 
 #include "database.h"
 #include "metiers_modele.h"
@@ -69,9 +69,9 @@ int metiers_update(MYSQL *cnx, int metier_id, char *metier)
         database_exit_error(cnx);
     }
 
-    int id = mysql_insert_id(cnx);
+//    int id = mysql_insert_id(cnx);
 
-    return (id);
+    return (0);
 }
 
 int metiers_delete(MYSQL *cnx, int metier_id)
@@ -86,9 +86,9 @@ int metiers_delete(MYSQL *cnx, int metier_id)
         database_exit_error(cnx);
     }
 
-    int id = mysql_insert_id(cnx);
+//    int id = mysql_insert_id(cnx);
 
-    return (id);
+    return (0);
 }
 
 int metiers_existe( MYSQL *cnx, int metier_id, char *metier)
@@ -107,17 +107,20 @@ int metiers_existe( MYSQL *cnx, int metier_id, char *metier)
         database_exit_error(cnx);
     }
 
-    MYSQL_ROW row;
-    row = mysql_fetch_row(result);
-    // strcpy(metier_id, row[1] ? row[1] : "");
-    strcpy(metier, row[2] ? row[2] : "");
+//    MYSQL_ROW row;
+//    row = mysql_fetch_row(result);
+//    // strcpy(metier_id, row[1] ? row[1] : "");
+//    strcpy(metier, row[2] ? row[2] : "");
+
+    int existe = mysql_num_rows(result) == 0 ? 1 : 0;
 
     mysql_free_result(result);
+/*    
     int existe = mysql_num_rows(result);
 
     if (existe == 0) {
         return(1);
     }
-
-    return(0);
+*/
+    return(existe);
 }

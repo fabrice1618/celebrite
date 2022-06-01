@@ -9,7 +9,7 @@ void print_metier(char *metier);
 
 int main(int argc, char **argv)
 {
-    MYSQL *cnx;
+    MYSQL *cnx = NULL;
     int id_cree;
     char metier[51];
 
@@ -34,7 +34,7 @@ int main(int argc, char **argv)
     int update = metiers_update(cnx, id_modif, metier);
 
     int id_delete = 19;
-    int update = metiers_delete(cnx, id_delete);
+    int delete_ok = metiers_delete(cnx, id_delete);
 
     strcpy(metier, "SYS");
     int id_existe = 9;

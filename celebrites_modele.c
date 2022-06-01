@@ -1,6 +1,6 @@
 #include <stdio.h>
 #include <string.h>
-#include <mysql.h>
+#include <mysql/mysql.h>
 
 #include "database.h"
 #include "celebrites_modele.h"
@@ -11,15 +11,7 @@
 
 int celebrites_create( MYSQL *cnx, char *nom, char *prenom, char *genre )
 {
-    char query[250];
-
-    sprintf(query, QUERY_INSERT, nom, prenom, genre);
-    printf("Query: %s\n", query);
-
-    if ( mysql_query(cnx, query) ) {
-        database_exit_error(cnx);
-    }
-
+    database_query(cnx, QUERY_INSERT, nom, prenom, genre);
     int id = mysql_insert_id(cnx);
 
     return(id);
@@ -27,15 +19,8 @@ int celebrites_create( MYSQL *cnx, char *nom, char *prenom, char *genre )
 
 int celebrites_read(MYSQL *cnx, int celeb_id, char *nom, char *prenom, char *genre)
 {
-    char query[250];
 
-    sprintf(query, QUERY_READ, celeb_id);
-    printf("Query: %s\n", query);
-
-    if (mysql_query(cnx, query)) {
-        database_exit_error(cnx);
-    }
-
+    database_query(cnx, QUERY_READ, celeb_id);
     MYSQL_RES *result = mysql_store_result(cnx);
     if (result == NULL) {
         database_exit_error(cnx);
@@ -52,4 +37,10 @@ int celebrites_read(MYSQL *cnx, int celeb_id, char *nom, char *prenom, char *gen
     mysql_free_result(result);
 
     return(row[0] ? 0 : 1);
+}
+
+//enum('masculin','feminin','autre','')
+int valid_genre(char *genre)
+{
+
 }

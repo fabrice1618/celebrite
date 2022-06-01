@@ -1,18 +1,4 @@
 // Moussa, Sofiene
-
-
-//char nom[51];
-// int id_cree;
-//id_cree = celebrites_create(nom, prenom, genre);
-
-/*
-ajoute(int *a, int *b)
-{
- *a = 12;
- *b = 25;
-}
-*/
-
 // Leo, Mathis
 // Sara
 

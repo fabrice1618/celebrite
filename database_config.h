@@ -3,7 +3,7 @@
 
 #define DB_HOST "localhost"
 #define DB_USER "dba"
-#define DB_PWD "irup"
-#define DB_DB "celebrites"
+#define DB_PWD "ghjk"
+#define DB_DB "celebrite"
 
 #endif
